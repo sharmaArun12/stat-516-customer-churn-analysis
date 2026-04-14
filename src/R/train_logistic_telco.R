@@ -5,7 +5,7 @@ library(glmnet)  # Added for Penalized Regression
 library(pROC)    # Added for AUC evaluation
 
 # Load data
-file_path <- "C:/Users/umara/Downloads/Temp/archive/WA_Fn-UseC_-Telco-Customer-Churn.csv"
+file_path <- "data/WA_Fn-UseC_-Telco-Customer-Churn.csv"
 churn_data <- read.csv(file_path, na.strings = c(" ", "", "NA"), stringsAsFactors = FALSE)
 
 # Clean Data (Keeping the continuous variables this time)
