@@ -1,106 +1,97 @@
-# Customer Churn Prediction: Model Comparison
+# Customer Churn Prediction Analysis (MATH 516)
 
-## Group Members
+This project focuses on predicting customer churn using multiple machine learning and statistical models. The goal is to compare model performance across different approaches and understand how model complexity impacts predictive accuracy on tabular data.
 
-* Arun Sharma
-* Umar Mohammed Yousuf
-* Alex Vukovic
 
-## Overview
+## Models Implemented
 
-This project looks at customer churn prediction using three different modeling approaches: Logistic Regression, XGBoost, and an FT-Transformer. The idea is to compare how these models behave on the same dataset and to see whether more complex models actually provide better results.
+The following models were used in this project:
 
-Since the data is structured (tabular), it also gives a good setting to compare traditional methods with newer deep learning approaches.
+- Logistic Regression (R)
+- XGBoost (Python)
+- FT-Transformer (Python)
+
+These models represent increasing levels of complexity, from simple linear methods to advanced deep learning techniques.
 
 ## Dataset
 
-The analysis is based on the Telco Customer Churn dataset. It includes information about customer demographics, services used, billing details, and whether the customer has churned.
+The dataset used is the **Telco Customer Churn dataset**, which contains customer-level information such as:
 
-The dataset is not included in this repository. To run the code, download it separately and place it in the project directory with the name:
+- Demographics
+- Services subscribed
+- Account details
+- Billing information
 
-WA_Fn-UseC_-Telco-Customer-Churn.csv
+The dataset is included in this repository:
+
+
+data/WA_Fn-UseC_-Telco-Customer-Churn.csv
 
 ## Project Structure
 
-```
-stat-516-customer-churn-analysis/
-├── README.md
-├── .gitignore
-├── requirements.txt
-├── src/
-│   ├── python/
-│   │   ├── ft_transformer.py
-│   │   └── xgboost_model.py
-│   └── r/
-│       └── logistic_regression.R
-├── report/
-│   └── final_report.pdf
-```
 
-## Models Used
+data/
+WA_Fn-UseC_-Telco-Customer-Churn.csv
 
-**Logistic Regression (R)**
-Used as a baseline model. It’s simple, interpretable, and gives a reference point for comparison.
+src/
+python/
+ft_transformer.py
+train_xgboost_telco_ordinal.py
 
-**XGBoost (Python)**
-A tree-based ensemble model that performs well on tabular data and captures non-linear relationships.
+R/
+train_logistic_telco.R
 
-**FT-Transformer (Python)**
-A deep learning model designed for tabular data. It uses attention mechanisms to model interactions between features.
+README.md
+final_report.md
+requirements.txt
 
-## How to Run
 
-### Python Models
+## Evaluation Metrics
 
-Install dependencies:
+The models were evaluated using multiple metrics to provide a comprehensive comparison:
 
-```
+- ROC-AUC  
+- PR-AUC  
+- Brier Score  
+- F1 Score  
+
+A classification threshold of 0.3 was used to better identify churn cases.
+
+## Results Summary
+
+| Model                | ROC-AUC | PR-AUC | Brier Score | F1 Score |
+|---------------------|--------|--------|------------|----------|
+| Logistic Regression | 0.8557 | 0.6743 | 0.1314     | 0.6399   |
+| XGBoost             | 0.8388 | 0.6676 | 0.1575     | 0.5857   |
+| FT-Transformer      | 0.8485 | 0.6601 | 0.1364     | 0.6187   |
+
+Logistic Regression achieved the best overall performance, while more complex models such as XGBoost and FT-Transformer showed competitive results but required additional tuning and computational effort.
+
+## Final Report
+
+The complete project report is available here:
+
+[View Final Report](final_report.md)
+
+---
+
+## Requirements
+
+To run the Python code:
+
+```bash
 pip install -r requirements.txt
-```
 
-Run FT-Transformer:
+For R, install the required packages:
 
-```
-python3 src/python/ft_transformer.py
-```
+install.packages(c("tidyverse", "caret", "glmnet", "pROC", "PRROC", "DescTools"))
 
-Run XGBoost:
+Contributors
+Arun Sharma
+Umar Mohammed Yousuf
+Alex Vukovic
 
-```
-python3 src/python/xgboost_model.py
-```
-
-### R Model
-
-Install required packages:
-
-```
-install.packages(c("tidyverse", "caret", "glmnet", "pROC", "DescTools"))
-```
-
-Run the script:
-
-```
-source("src/r/logistic_regression.R")
-```
-
-## Evaluation
-
-The models are compared using multiple metrics instead of relying on a single measure. These include:
-
-* ROC-AUC
-* PR-AUC
-* Accuracy
-* Precision, Recall, and F1 Score
-* Brier Score
-* Log Loss
-
-Using multiple metrics gives a better understanding of how each model performs under different aspects.
-
-## Results
-
-The detailed results and comparisons are included in the final report. Overall, the project focuses on understanding whether increased model complexity leads to meaningful improvements, or if simpler models remain competitive on this type of data.
-
-## Contribution
-
-This project was completed as part of a group assignment. Different models and parts of the analysis were handled across team members, with all results brought together in the final report.
+Notes
+All code is reproducible using the provided dataset.
+Paths are configured relative to the repository structure.
+The project compares both traditional and modern approaches to tabular data modeling.
