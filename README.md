@@ -112,7 +112,7 @@ python3 src/python/train_xgboost_telco_ordinal.py
 R
 source("src/R/train_logistic_telco.R")
 
-NotesL:
+Notes:
 All code is reproducible using the dataset included in the repository.
 File paths are set relative to the project structure.
 The project compares both classical statistical models and modern deep learning approaches for tabular data.
